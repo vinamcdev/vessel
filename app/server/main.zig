@@ -60,7 +60,7 @@ pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     const allocator = gpa.allocator();
 
-    const address = try net.Address.parseIp("0.0.0.0", 3000);
+    const address = try net.Address.parseIp("0.0.0.0", 56625);
     var server = try address.listen(.{
         .reuse_address = true,
         .kernel_backlog = 128,
