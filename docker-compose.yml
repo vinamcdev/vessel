@@ -1,0 +1,28 @@
+services:
+  server:
+    build: .
+    ports:
+      - "56565:56565"
+    environment:
+      - REDIS_ADDR=redis:6379
+    depends_on:
+      - redis
+    networks:
+      - vessel-net
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --save 60 1 --appendonly yes
+    networks:
+      - vessel-net
+
+volumes:
+  redis-data:
+    driver: local
+
+networks:
+  vessel-net:
