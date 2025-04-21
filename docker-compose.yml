@@ -5,7 +5,7 @@ services:
       - "56565:56565"
     environment:
       - REDIS_ADDR=redis:6379
-      - REDIS_PASSWORD=admin # CHANGE
+      - REDIS_PASSWORD= # Add if redis auth is used
     depends_on:
       - redis
     networks:
